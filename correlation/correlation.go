@@ -4,6 +4,7 @@ package correlation
 
 import (
 	"context"
+	"log/slog"
 	"net/http"
 
 	"github.com/google/uuid"
@@ -38,6 +39,17 @@ func Middleware(next http.Handler) http.Handler {
 		w.Header().Set(Header, id)
 		next.ServeHTTP(w, r.WithContext(WithContext(r.Context(), id)))
 	})
+}
+
+// Extractor returns a context extractor that injects the correlation ID into
+// log records as a "request_id" attribute. Pass it to logging.New.
+func Extractor() func(context.Context) []slog.Attr {
+	return func(ctx context.Context) []slog.Attr {
+		if id := FromContext(ctx); id != "" {
+			return []slog.Attr{slog.String("request_id", id)}
+		}
+		return nil
+	}
 }
 
 // Transport is an http.RoundTripper that injects the correlation ID from the

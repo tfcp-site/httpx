@@ -68,6 +68,24 @@ func TestTransport_injectsIDFromContext(t *testing.T) {
 	}
 }
 
+func TestExtractor_withID(t *testing.T) {
+	ctx := correlation.WithContext(context.Background(), "abc-123")
+	attrs := correlation.Extractor()(ctx)
+	if len(attrs) != 1 {
+		t.Fatalf("len(attrs) = %d, want 1", len(attrs))
+	}
+	if attrs[0].Key != "request_id" || attrs[0].Value.String() != "abc-123" {
+		t.Errorf("attr = %v, want request_id=abc-123", attrs[0])
+	}
+}
+
+func TestExtractor_withoutID(t *testing.T) {
+	attrs := correlation.Extractor()(context.Background())
+	if len(attrs) != 0 {
+		t.Errorf("len(attrs) = %d, want 0", len(attrs))
+	}
+}
+
 func TestTransport_skipsWhenContextEmpty(t *testing.T) {
 	var gotHeader string
 
