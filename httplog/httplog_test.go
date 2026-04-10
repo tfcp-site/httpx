@@ -79,7 +79,7 @@ func TestMiddleware_normalRequest(t *testing.T) {
 	if completion["msg"] != "response" {
 		t.Errorf("msg = %v, want %q", completion["msg"], "response")
 	}
-	for _, field := range []string{"method", "path", "status", "duration_ms"} {
+	for _, field := range []string{"method", "path", "status", "duration"} {
 		if _, ok := completion[field]; !ok {
 			t.Errorf("completion log missing field %q", field)
 		}
@@ -108,8 +108,8 @@ func TestMiddleware_cachedRequest(t *testing.T) {
 	if completion["cached"] != true {
 		t.Errorf("cached = %v, want true", completion["cached"])
 	}
-	if _, ok := completion["duration_ms"]; ok {
-		t.Error("duration_ms must be absent for cached requests")
+	if _, ok := completion["duration"]; ok {
+		t.Error("duration must be absent for cached requests")
 	}
 }
 

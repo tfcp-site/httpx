@@ -52,7 +52,7 @@ func Middleware(log *slog.Logger) func(http.Handler) http.Handler {
 			if meta.cached {
 				attrs = append(attrs, slog.Bool("cached", true))
 			} else {
-				attrs = append(attrs, slog.Int64("duration_ms", time.Since(start).Milliseconds()))
+				attrs = append(attrs, slog.String("duration", time.Since(start).String()))
 			}
 
 			log.LogAttrs(r.Context(), slog.LevelInfo, "response", attrs...)
