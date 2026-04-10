@@ -18,12 +18,6 @@ Log format specification: [docs/spec.md](docs/spec.md)
 go get github.com/tfcp-site/httpx@latest
 ```
 
-Requires `GOPRIVATE` for the private module:
-
-```bash
-go env -w GOPRIVATE="github.com/tfcp-site/*"
-```
-
 ## Wiring
 
 Typical `main.go`:
