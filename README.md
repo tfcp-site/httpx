@@ -108,10 +108,10 @@ The `request_id` field is injected automatically via the logger (see `logging` +
 **Completion** — logged after the handler returns:
 
 ```json
-{"level":"INFO","service":"mentor","msg":"response","request_id":"f4a1-...","method":"POST","path":"/api/chat","status":200,"duration_ms":45}
+{"level":"INFO","service":"mentor","msg":"response","request_id":"f4a1-...","method":"POST","path":"/api/chat","status":200,"duration":"45ms"}
 ```
 
-For cached responses, `cached: true` is written instead of `duration_ms`.
+For cached responses, `cached: true` is written instead of `duration`.
 
 **Usage:**
 

@@ -45,13 +45,13 @@
 | `method` | string | `"POST"` |
 | `path` | string | `"/api/chat"` |
 | `status` | int | `200` |
-| `duration_ms` | int | `1240` |
+| `duration` | string | `"1.5s"`, `"150ms"` |
 | `cached` | bool | `true` |
 
-`duration_ms` и `cached` взаимоисключающие: обработан → `duration_ms`, из кеша → `cached: true`.
+`duration` и `cached` взаимоисключающие: обработан → `duration`, из кеша → `cached: true`.
 
 ```json
-{"level":"INFO","service":"mentor","msg":"response","request_id":"550e8400-...","method":"POST","path":"/api/chat","status":200,"duration_ms":1240}
+{"level":"INFO","service":"mentor","msg":"response","request_id":"550e8400-...","method":"POST","path":"/api/chat","status":200,"duration":"1.240s"}
 ```
 
 ### App
@@ -64,7 +64,7 @@
 {"level":"INFO","service":"mentor","msg":"request","request_id":"550e8400-...","method":"POST","path":"/api/chat"}
 {"level":"INFO","service":"mentor","msg":"cache miss","request_id":"550e8400-...","key":"chat:abc"}
 {"level":"INFO","service":"mentor","msg":"llm response","request_id":"550e8400-...","tokens":312}
-{"level":"INFO","service":"mentor","msg":"response","request_id":"550e8400-...","method":"POST","path":"/api/chat","status":200,"duration_ms":1240}
+{"level":"INFO","service":"mentor","msg":"response","request_id":"550e8400-...","method":"POST","path":"/api/chat","status":200,"duration":"1.240s"}
 ```
 
 **Вне клиентского запроса** (startup, background job и т.п.) — без `request_id`:
