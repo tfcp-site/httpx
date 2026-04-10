@@ -4,11 +4,11 @@ Shared HTTP utilities for tfcp-site services.
 
 ## Packages
 
-| Package | Purpose | Docs |
-|---|---|---|
-| `correlation` | Propagates `request_id` across service boundaries | [docs/correlation.md](docs/correlation.md) |
-| `logging` | Pre-configured structured logger | [docs/logging.md](docs/logging.md) |
-| `httplog` | HTTP middleware for request logging | [docs/httplog.md](docs/httplog.md) |
+| Package | Purpose |
+|---|---|
+| [`correlation`](docs/correlation.md) | Propagates `request_id` across service boundaries |
+| [`logging`](docs/logging.md) | Pre-configured structured logger |
+| [`httplog`](docs/httplog.md) | HTTP middleware for request logging |
 
 Log format specification: [docs/spec.md](docs/spec.md)
 
