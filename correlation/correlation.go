@@ -7,7 +7,7 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/google/uuid"
+	"github.com/rs/xid"
 )
 
 // Header is the HTTP header used to carry the correlation ID.
@@ -34,7 +34,7 @@ func Middleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		id := r.Header.Get(Header)
 		if id == "" {
-			id = uuid.NewString()
+			id = xid.New().String()
 		}
 		w.Header().Set(Header, id)
 		next.ServeHTTP(w, r.WithContext(WithContext(r.Context(), id)))
