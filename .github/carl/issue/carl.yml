@@ -1,0 +1,8 @@
+instance_id: issue
+model: meta-llama/llama-4-maverick
+guidelines: .github/carl/issue/carl.md
+max_diff_chars: 25000
+max_files: 15
+ignore:
+  - '*.sum'
+  - 'vendor/**'

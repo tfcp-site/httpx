@@ -1,0 +1,8 @@
+instance_id: tests
+model: deepseek/deepseek-v3.2
+guidelines: .github/carl/tests/carl.md
+max_diff_chars: 15000
+max_files: 20
+ignore:
+  - '**'
+  - '!**/*_test.go'

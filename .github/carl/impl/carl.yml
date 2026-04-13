@@ -1,0 +1,9 @@
+instance_id: impl
+model: deepseek/deepseek-v3.2
+guidelines: .github/carl/impl/carl.md
+max_diff_chars: 20000
+max_files: 10
+ignore:
+  - '*.sum'
+  - 'vendor/**'
+  - '**/*_test.go'
