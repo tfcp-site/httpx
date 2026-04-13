@@ -1,5 +1,5 @@
 module github.com/tfcp-site/httpx
 
-go 1.23
+go 1.26.1
 
 require github.com/rs/xid v1.6.0
