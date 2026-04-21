@@ -45,9 +45,9 @@ func Middleware(log *slog.Logger) func(http.Handler) http.Handler {
 			))
 
 			attrs := []slog.Attr{
+				slog.Int("status", rw.status),
 				slog.String("method", r.Method),
 				slog.String("path", r.URL.Path),
-				slog.Int("status", rw.status),
 			}
 			if meta.cached {
 				attrs = append(attrs, slog.Bool("cached", true))
